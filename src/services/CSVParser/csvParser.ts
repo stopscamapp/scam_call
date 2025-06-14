@@ -20,30 +20,46 @@ class CSVParser{
                     })
                     .on('data', async row => {
                          // Увеличиваем счетчик при каждой новой строке данных
+                         //console.log(row);
+                         
                         rowCount++;
                         console.log(rowCount);
 
                         const number =  row[fields.number];
+                        console.log(number);
                         let  numberStr;
                         if(fields.numberRegExp!=null){
                             if(fields.numberRegExp.test(number)){
-                                if(fields.numberconverter!=null){
-                                    numberStr = fields.numberconverter(number);
-                                }else{
-                                    numberStr = number;
-                                }
+                                
                                 //const  numberStr ="1"+(number.split("-").join(""));
                             }else{
                                 return;
                             } 
                             
-                        }else{
-                            numberStr=number;
                         }
+                        if(fields.numberconverter!=null){
+                            numberStr = fields.numberconverter(number);
+                        }else{
+                            numberStr = number;
+                        }
+                        console.log(numberStr);
+                        let date:Date;
 
-
-                        const dateInMilliseconds  = Date.parse(row[fields.date]);
-                        const date = new Date(dateInMilliseconds);  
+                        const dateField = row[fields.date]
+                        console.log(dateField);
+                        if(fields.dateConverter!=null){
+                           const dateConverted = fields.dateConverter(dateField);
+                           if(dateConverted==null){
+                            return;
+                           }else{
+                            date=dateConverted;
+                           }
+                        }else{
+                            const dateInMilliseconds  = Date.parse(row[fields.date]);
+                            date = new Date(dateInMilliseconds); 
+                        }
+                         console.log(date);
+                         
                         if(date.getFullYear()==2025||date.getFullYear()==2024){
                             
                         }else{
@@ -69,11 +85,3 @@ class CSVParser{
 }
 
 export default new CSVParser()
-
-
-"Caller ID Number"
-"Date of Issue"
-Issue
-
-"Company_Phone_Number"
-"Violation_Date"

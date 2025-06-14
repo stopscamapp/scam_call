@@ -5,20 +5,18 @@ import Opendata_Fcc_Gov_Task from "./tasks/opendata.fcc.gov";
 //Tasks
 
 
-
-
-
 class CronService{
 
     private tasks:Array<AbstractCronTask>= [
         Fts_Gov_Task,
-        Opendata_Fcc_Gov_Task
+        //Opendata_Fcc_Gov_Task
     ]
 
 
-    startTasks(){
+    async startTasks(){
         for(let tsk of this.tasks){
-            //tsk.start();
+            await tsk.handler();
+            tsk.start();
         }
     }
 }

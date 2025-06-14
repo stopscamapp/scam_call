@@ -2,6 +2,9 @@
 import { DataTypes, Model } from 'sequelize';
 import sequelize from '../db/postgres/postgres';
 
+//ключи для DTFtcGovConfig
+export const LAST_DATE_KEY="LAST_DATE_KEY";
+
 
 export enum DTFtcGovConfigRow{
     key="key",

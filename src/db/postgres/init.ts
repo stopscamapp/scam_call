@@ -1,7 +1,7 @@
 import postgresDb from "./postgres";
 import DTFtcGovConfig from "../../models/fts_gov_config";
 import DTOpenDataFccGovConfig from "../../models/opendata_fcc_gov_config";
-
+import ScamNumbers from "../../models/scamNumbers";
 
 class InitializePostgres{
     
@@ -19,6 +19,7 @@ class InitializePostgres{
 
     private async initializeModels(){
         try {
+            await ScamNumbers.sync({ alter: true });
             await DTFtcGovConfig.sync({ alter: true });
             await DTOpenDataFccGovConfig.sync({ alter: true });
         } catch (error) {

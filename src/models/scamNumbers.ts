@@ -6,11 +6,13 @@ import sequelize from '../db/postgres/postgres';
 export enum ScumNumbersRow{
     number="number",
     description="description",
+    date="date",
 
 }
 class ScumNumbers extends Model{
     declare number:string;
     declare value:string;
+    declare date:Date;
 }
 ScumNumbers.init(
     {   
@@ -21,6 +23,10 @@ ScumNumbers.init(
         },
         description: {
             type: DataTypes.STRING,
+            allowNull: true,
+        },
+        date: {
+            type: DataTypes.DATE,
             allowNull: false,
         },
     },
