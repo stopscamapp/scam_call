@@ -1,5 +1,5 @@
 require("dotenv").config();
-import { startHttpServer } from "./src/httpServer/httpServer";
+import { startHttpServer } from "./src/server/httpServer";
 import cronService from "./src/services/cronService/cronService";
 import InitializePostgres from "./src/db/postgres/init";
 

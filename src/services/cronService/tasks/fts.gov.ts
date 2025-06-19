@@ -52,7 +52,7 @@ class Fts_Gov_Task extends AbstractCronTask{
 
             const fields: ICSVFields={
                 number:"Company_Phone_Number",
-                numberconverter:(number:string)=>"1"+number,
+                numberconverter: this.numberconverter,
                 date:"Violation_Date",
                 description:"Issue"
             }
@@ -110,7 +110,7 @@ class Fts_Gov_Task extends AbstractCronTask{
         }
     }
 
-    private generateDates = (startDate: Date, endDate: Date): Date[] => {
+    private generateDates(startDate: Date, endDate: Date): Date[]{
         const dates: Date[] = [];
         let currentDate = new Date(startDate);
         while (currentDate <= endDate) {
@@ -130,9 +130,15 @@ class Fts_Gov_Task extends AbstractCronTask{
                     'Cookie': '_ga=GA1.1.1294945875.1749688914; _ga_CSLL4ZEK4L=GS2.1.s1749827130$o2$g0$t1749827145$j45$l0$h0; _ga_B59RVWNH5N=GS2.1.s1749827130$o2$g0$t1749827145$j45$l0$h0'
                 }
     
-    private defaultStartDate = new Date('2024-01-01')
+    private defaultStartDate = new Date('2025-01-01')
 
-    
+    private numberconverter(number:string):string{
+        if(number.length<=10){
+            return number
+        }else{
+            return number.substring(0,10)
+        }
+    }
     
 }
 export default new Fts_Gov_Task();

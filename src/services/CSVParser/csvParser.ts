@@ -23,10 +23,10 @@ class CSVParser{
                          //console.log(row);
                          
                         rowCount++;
-                        console.log(rowCount);
+                        //console.log(rowCount);
 
                         const number =  row[fields.number];
-                        console.log(number);
+                        //console.log(number);
                         let  numberStr;
                         if(fields.numberRegExp!=null){
                             if(fields.numberRegExp.test(number)){
@@ -42,11 +42,11 @@ class CSVParser{
                         }else{
                             numberStr = number;
                         }
-                        console.log(numberStr);
+                        //console.log(numberStr);
                         let date:Date;
 
                         const dateField = row[fields.date]
-                        console.log(dateField);
+                        //console.log(dateField);
                         if(fields.dateConverter!=null){
                            const dateConverted = fields.dateConverter(dateField);
                            if(dateConverted==null){

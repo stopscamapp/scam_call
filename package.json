@@ -11,6 +11,7 @@
   "license": "ISC",
   "description": "",
   "devDependencies": {
+    "@types/etag": "^1.8.4",
     "@types/express": "^5.0.1",
     "@types/sequelize": "^4.28.20",
     "nodemon": "^3.1.9",
@@ -22,6 +23,7 @@
     "csv-parser": "^3.2.0",
     "date-fns": "^4.1.0",
     "dotenv": "^16.5.0",
+    "etag": "^1.8.1",
     "express": "^5.1.0",
     "fast-csv": "^5.0.2",
     "pg": "^8.16.0",
